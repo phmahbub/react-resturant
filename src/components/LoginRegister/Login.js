@@ -1,21 +1,22 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-    return (
-        <div>
-           <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100">
+  return (
+    <div className="flex justify-center my-12">
+      <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-100 text-gray-800">
         <h2 className="mb-3 text-3xl font-semibold text-center">
           Login to your account
         </h2>
         <p className="text-sm text-center dark:text-gray-400">
           Dont have account?
-          <a
-            href="#"
+          <Link
+            to="/signup"
             rel="noopener noreferrer"
             className="focus:underline hover:underline"
           >
             Sign up here
-          </a>
+          </Link>
         </p>
         <div className="my-6 space-y-4">
           <button
@@ -73,7 +74,7 @@ const Login = () => {
         >
           <div className="space-y-4">
             <div className="space-y-2">
-              <label for="email" className="block text-sm">
+              <label forHTML="email" className="block text-sm">
                 Email address
               </label>
               <input
@@ -81,12 +82,12 @@ const Login = () => {
                 name="email"
                 id="email"
                 placeholder="leroy@jenkins.com"
-                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 bg-gray-100 text-gray-900 focus:dark:border-violet-400"
               />
             </div>
             <div className="space-y-2">
               <div className="flex justify-between">
-                <label for="password" className="text-sm">
+                <label forHTML="password" className="text-sm">
                   Password
                 </label>
                 <a
@@ -102,20 +103,20 @@ const Login = () => {
                 name="password"
                 id="password"
                 placeholder="*****"
-                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 bg-gray-100 text-gray-900 focus:dark:border-violet-400"
               />
             </div>
           </div>
           <button
             type="button"
-            className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900"
+            className="w-full px-8 py-3 font-semibold rounded-md bg-slate-500 text-gray-100"
           >
             Sign in
           </button>
         </form>
-      </div> 
-        </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Login;

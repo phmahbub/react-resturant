@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   return (
-    <div>
-      <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 dark:bg-gray-900 dark:text-gray-100">
+    <div className="flex justify-center my-12">
+      <div className="flex flex-col w-full max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
         <div className="mb-8 text-center">
-          <h1 className="my-3 text-4xl font-bold">Sign in</h1>
+          <h1 className="my-3 text-4xl font-bold">Sign up</h1>
           <p className="text-sm dark:text-gray-400">
-            Sign in to access your account
+            Sign up using your information
           </p>
         </div>
         <form
@@ -17,7 +18,19 @@ const Signup = () => {
         >
           <div className="space-y-4">
             <div>
-              <label for="email" className="block mb-2 text-sm">
+              <label forHTML="email" className="block mb-2 text-sm">
+                Name
+              </label>
+              <input
+                type="name"
+                name="name"
+                id="name"
+                placeholder="Your full name"
+                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-100 dark:text-gray-900"
+              />
+            </div>
+            <div>
+              <label forHTML="email" className="block mb-2 text-sm">
                 Email address
               </label>
               <input
@@ -25,28 +38,28 @@ const Signup = () => {
                 name="email"
                 id="email"
                 placeholder="leroy@jenkins.com"
-                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-100 dark:text-gray-900"
               />
             </div>
             <div>
               <div className="flex justify-between mb-2">
-                <label for="password" className="text-sm">
+                <label forHTML="password" className="text-sm">
                   Password
                 </label>
-                <a
+                <Link
                   rel="noopener noreferrer"
                   href="#"
                   className="text-xs hover:underline dark:text-gray-400"
                 >
                   Forgot password?
-                </a>
+                </Link>
               </div>
               <input
                 type="password"
                 name="password"
                 id="password"
                 placeholder="*****"
-                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-100 dark:text-gray-900"
               />
             </div>
           </div>
@@ -56,18 +69,18 @@ const Signup = () => {
                 type="button"
                 className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900"
               >
-                Sign in
+                Sign up
               </button>
             </div>
             <p className="px-6 text-sm text-center dark:text-gray-400">
-              Don't have an account yet?
-              <a
+              Do you have an account?
+              <Link
                 rel="noopener noreferrer"
-                href="#"
+                to='/signin'
                 className="hover:underline dark:text-violet-400"
               >
-                Sign up
-              </a>
+                Sign in
+              </Link>
               .
             </p>
           </div>
