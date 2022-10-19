@@ -5,7 +5,8 @@ import { AuthContext } from "../../contexts/UserContext";
 const Login = () => {
   const [email, setEmail]= useState('')
   const [password, setPassword]= useState('')
-  const {googleSignIn, signIn} = useContext(AuthContext)
+  const {googleSignIn, signIn, user} = useContext(AuthContext)
+  console.log(user)
   const handleGoogleSignIn = () =>{
     googleSignIn()
     .then(result=>console.log(result.user))
@@ -25,7 +26,9 @@ const Login = () => {
 
   const handleSignIn = () =>{
     signIn(email, password)
-    .then(result=>console.log(result.user))
+    .then(result=>{
+      const user = result.user
+    })
     .catch(error=>console.error(error))
   }
 

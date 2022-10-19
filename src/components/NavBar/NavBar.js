@@ -1,11 +1,18 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
+
 import './NavBar.css'
 
 const NavBar = () => {
-  const {user} = useContext(AuthContext)
-
+  const {user, logOut} = useContext(AuthContext)
+  console.log(user)
+  const handleLogOut = () =>{
+    logOut()
+      .then(()=>console.log('logout'))
+      .catch(error=>console.error(error))
+  
+  }
   
   return (
     <div>
@@ -27,7 +34,7 @@ const NavBar = () => {
               <path d="M22.094 19.451h-0.758c-0.188 0-0.363 0.049-0.515 0.135l0.006-0.004-4.574 2.512-5.282-3.049v-6.082l5.282-3.051 4.576 2.504c0.146 0.082 0.323 0.131 0.508 0.131h0.758c0.293 0 0.529-0.239 0.529-0.531v-0.716c0-0.2-0.11-0.373-0.271-0.463l-0.004-0.002-5.078-2.777c-0.293-0.164-0.645-0.26-1.015-0.26-0.39 0-0.756 0.106-1.070 0.289l0.010-0.006-5.281 3.049c-0.636 0.375-1.056 1.055-1.059 1.834v6.082c0 0.779 0.422 1.461 1.049 1.828l0.009 0.006 5.281 3.049c0.305 0.178 0.67 0.284 1.061 0.284 0.373 0 0.723-0.098 1.027-0.265l-0.012 0.006 5.080-2.787c0.166-0.091 0.276-0.265 0.276-0.465v-0.716c0-0.293-0.238-0.529-0.529-0.529z"></path>
             </svg>
           </Link>
-          <p>{user.displayName}</p>
+         
           <ul className="items-stretch hidden space-x-3 lg:flex">
             <li className="flex">
               <NavLink
@@ -67,10 +74,14 @@ const NavBar = () => {
             </li>
           </ul>
           <div className="items-center flex-shrink-0 hidden lg:flex">
-            {user?<Link to='/signin' className="self-center px-8 py-3 font-semibold rounded bg-orange-300 text-gray-900">Sign in</Link>
-            :<Link to='/signup' className="self-center px-8 py-3 font-semibold rounded bg-orange-300 text-gray-900">
+            <div className="flex items-center">
+            <img className="w-10 h-10 rounded-full" src={user?.photoURL}/>
+            <p className="px-2 font-bold text-orange-600">{user?.displayName}</p></div>
+            {user?<button onClick={handleLogOut} type='button' className="self-center px-8 py-3 font-semibold rounded bg-orange-300 text-gray-900">Sign out</button>
+            :<div><Link to='/signin' className="self-center px-8 py-3 font-semibold rounded bg-orange-300 text-gray-900 mr-2">Sign in</Link><Link to='/signup' className="self-center px-8 py-3 font-semibold rounded bg-orange-300 text-gray-900">
+            
               Sign up
-            </Link> }
+            </Link></div> }
           </div>
           <button className="p-4 lg:hidden">
             <svg

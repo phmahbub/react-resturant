@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile,  } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile, signOut,  } from "firebase/auth";
 import app from '../firbase/firebase.config';
 
 
@@ -26,6 +26,7 @@ const UserContext = ({children}) => {
 
   //logout user 
   const logOut = () =>{
+    return signOut(auth)
 
   }
 
