@@ -6,7 +6,7 @@ const Signup = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const {createUser} = useContext(AuthContext)
+  const {createUser, updateUserName, user} = useContext(AuthContext)
 
 
   const handleName =(event)=>{
@@ -29,11 +29,15 @@ const Signup = () => {
     createUser(email, password)
     .then(result =>console.log(result.user))
     .catch(error =>console.error(error))
-
+    //update user name 
+  updateUserName(name)
+  .then(()=>{
+    console.log('profile updated')
+  })
+  .catch(error=>console.error(error))
   }
 
-
-
+  
 
 
 

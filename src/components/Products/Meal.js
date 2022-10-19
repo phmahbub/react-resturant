@@ -11,7 +11,7 @@ const Meal = ({meal}) => {
                         <h2 className="text-3xl font-semibold tracking-wide">{strMeal}</h2>
                         <p className="dark:text-gray-100">{strInstructions.slice(0,80)} ...</p>
                     </div>
-                    <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900">Meal Details</button>
+                    <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-orange-400 dark:text-gray-900">Meal Details</button>
                 </div>
             </div>
         </div>
