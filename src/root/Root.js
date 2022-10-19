@@ -3,19 +3,19 @@ import Footer from '../components/Footer';
 import NavBar from '../components/NavBar/NavBar';
 import {Outlet, useLoaderData} from 'react-router-dom'
 
-const ProductContext = createContext([])
+export const ProductContext = createContext()
 
 const Root = () => {
    
     const products = useLoaderData()
-    console.log(products)
+    // console.log(products.meals)
     return (
         <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8'>
-            <ProductContext value={products}>
+            <ProductContext.Provider value={products}>
                 <NavBar />
-                <Outlet />
+                <Outlet/>
                 <Footer/>
-            </ProductContext>
+            </ProductContext.Provider>
             
         </div>
     );

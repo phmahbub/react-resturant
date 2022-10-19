@@ -1,7 +1,42 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/UserContext";
 
 const Signup = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const {createUser} = useContext(AuthContext)
+
+
+  const handleName =(event)=>{
+    const name = event.target.value
+    setName(name)
+    console.log(name)
+  }
+  const handleEmail =(event)=>{
+    const email = event.target.value
+    setEmail(email)
+    console.log(email);
+  }
+  const handlePassword=(event)=>{
+    const password = event.target.value
+    setPassword(password)
+    console.log(password);
+  }
+
+  const handleSingUp = () =>{
+    createUser(email, password)
+    .then(result =>console.log(result.user))
+    .catch(error =>console.error(error))
+
+  }
+
+
+
+
+
+
   return (
     <div className="flex justify-center my-12">
       <div className="flex flex-col w-full max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
@@ -11,9 +46,8 @@ const Signup = () => {
             Sign up using your information
           </p>
         </div>
-        <form
-          novalidate=""
-          action=""
+        <div
+          
           className="space-y-12 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-4">
@@ -22,6 +56,7 @@ const Signup = () => {
                 Name
               </label>
               <input
+              onChange={handleName}
                 type="name"
                 name="name"
                 id="name"
@@ -34,6 +69,7 @@ const Signup = () => {
                 Email address
               </label>
               <input
+                onChange={handleEmail}
                 type="email"
                 name="email"
                 id="email"
@@ -55,6 +91,7 @@ const Signup = () => {
                 </Link>
               </div>
               <input
+                onChange={handlePassword}
                 type="password"
                 name="password"
                 id="password"
@@ -66,6 +103,7 @@ const Signup = () => {
           <div className="space-y-2">
             <div>
               <button
+              onClick={handleSingUp}
                 type="button"
                 className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900"
               >
@@ -79,12 +117,12 @@ const Signup = () => {
                 to='/signin'
                 className="hover:underline dark:text-violet-400"
               >
-                Sign in
+              <span className="text-purple-500"> Sign in</span>
               </Link>
               .
             </p>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

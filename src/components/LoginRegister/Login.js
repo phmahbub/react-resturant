@@ -1,7 +1,38 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/UserContext";
 
 const Login = () => {
+  const [email, setEmail]= useState('')
+  const [password, setPassword]= useState('')
+  const {googleSignIn, signIn} = useContext(AuthContext)
+  const handleGoogleSignIn = () =>{
+    googleSignIn()
+    .then(result=>console.log(result.user))
+    .catch(error=>console.error(error))
+  }
+
+  const handleEmail =(event)=>{
+    const email = event.target.value
+    console.log(email)
+    setEmail(email)
+  }
+
+  const handlePassword =(event)=>{
+    const password = event.target.value
+    setPassword(password)
+  }
+
+  const handleSignIn = () =>{
+    signIn(email, password)
+    .then(result=>console.log(result.user))
+    .catch(error=>console.error(error))
+  }
+
+
+
+
+
   return (
     <div className="flex justify-center my-12">
       <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-100 text-gray-800">
@@ -15,11 +46,12 @@ const Login = () => {
             rel="noopener noreferrer"
             className="focus:underline hover:underline"
           >
-            Sign up here
+            <span className="text-orange-500"> Sign up here</span>
           </Link>
         </p>
         <div className="my-6 space-y-4">
           <button
+            onClick={handleGoogleSignIn}
             aria-label="Login with Google"
             type="button"
             className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
@@ -67,17 +99,18 @@ const Login = () => {
           <p className="px-3 dark:text-gray-400">OR</p>
           <hr className="w-full dark:text-gray-400" />
         </div>
-        <form
-          novalidate=""
+        <div
+          noValidate=""
           action=""
           className="space-y-8 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-4">
             <div className="space-y-2">
-              <label forHTML="email" className="block text-sm">
+              <label forhtml="email" className="block text-sm">
                 Email address
               </label>
               <input
+                onChange={handleEmail}
                 type="email"
                 name="email"
                 id="email"
@@ -87,7 +120,7 @@ const Login = () => {
             </div>
             <div className="space-y-2">
               <div className="flex justify-between">
-                <label forHTML="password" className="text-sm">
+                <label forhtml="password" className="text-sm">
                   Password
                 </label>
                 <a
@@ -99,6 +132,7 @@ const Login = () => {
                 </a>
               </div>
               <input
+                onChange={handlePassword}
                 type="password"
                 name="password"
                 id="password"
@@ -108,12 +142,13 @@ const Login = () => {
             </div>
           </div>
           <button
+            onClick={handleSignIn}
             type="button"
             className="w-full px-8 py-3 font-semibold rounded-md bg-slate-500 text-gray-100"
           >
             Sign in
           </button>
-        </form>
+        </div>
       </div>
     </div>
   );
