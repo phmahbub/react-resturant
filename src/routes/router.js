@@ -8,6 +8,7 @@ import Login from '../components/LoginRegister/Login';
 import Signup from '../components/LoginRegister/Signup';
 import Products from '../components/Products/Products';
 import Root from '../root/Root';
+import PraivateRoute from './PraivateRoute';
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
         children:[
             {path:'/home', element:<Home/>},
             {path:'/', element:<Header/>},
-            {path:'/products', element:<Products/>},
+            {path:'/products', element:<PraivateRoute><Products/></PraivateRoute>},
             {path:'/cart', element:<Cart/>},
             {path:'/about', element:<About/>},
             {path:'/signin', element:<Login/>},
